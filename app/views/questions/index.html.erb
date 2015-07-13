@@ -1,6 +1,16 @@
 <h1>All questions</h1>
-<ul>
+<ul id="questions">
+
   <% @questions.each do |question| %>
     <li><%= link_to question.name, question_path(question) %></li>
+      <ul>
+        <% question.options.order(created_at: :desc).each do |option| %>
+          <li class="option"><%= link_to "vote", question_option_path(question, option), remote: true, method: :patch %> <%= option.description %> - <span id="<%= option.id %>"><%= option.score %></span></li>
+        <% end %>
+      </ul>
   <% end %>
 </ul>
+
+
+
+<%= link_to "New Question", new_question_path, id: "new_question_link", class:"btn btn-default", remote: true%>

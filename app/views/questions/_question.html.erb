@@ -1,0 +1,11 @@
+<li>
+  <%= link_to @question.name, question_path(@question) %>
+  <ul>
+    <% @question.options.each do |option| %>
+      <li> <%= option.description %> </li>
+    <% end %>
+  </ul>
+</li>
+
+<!-- 
+@question is refering to @question in the controller def create -->

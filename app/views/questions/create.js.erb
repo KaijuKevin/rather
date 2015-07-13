@@ -1,0 +1,6 @@
+$('#new_question').remove();
+$('#new_question_link').show();
+$('#questions').append("<%= j render(@question) %>")
+
+// 
+// @question refers to @question in the controller but looks for the partial _question.html.erb
