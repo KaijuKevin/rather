@@ -1,0 +1,25 @@
+<!-- <%= form_for @question do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <label for="option_a">Option A</label>
+  <input type="text" name="option_a" value="">
+  <label for="option_b">Option B</label>
+  <input type="text" name="option_b" value="">
+  <%= f.submit %>
+<% end %> -->
+
+<%= form_for @question do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.fields_for :options do |option_fields| %>
+    <%= option_fields.label :description, "Option #{@i}" %>
+    <%= option_fields.text_field :description %>
+  <% end %>
+  <%= f.fields_for :options do |option_fields| %>
+    <%= option_fields.label :description, "Option B" %>
+    <%= option_fields.text_field :description %>
+  <% end %>
+  <%= f.submit %>
+<% end %>
+
+<!-- Nested form in rails terms. -->
