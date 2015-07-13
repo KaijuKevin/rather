@@ -6,11 +6,10 @@
       <ul>
         <% question.options.order(created_at: :desc).each do |option| %>
           <li class="option"><%= link_to "vote", question_option_path(question, option), remote: true, method: :patch %> <%= option.description %> - <span id="<%= option.id %>"><%= option.score %></span></li>
+          <li> <%= image_tag option.image%></li>
         <% end %>
       </ul>
   <% end %>
 </ul>
-
-
 
 <%= link_to "New Question", new_question_path, id: "new_question_link", class:"btn btn-default", remote: true%>

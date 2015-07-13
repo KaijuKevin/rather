@@ -8,20 +8,24 @@
   <%= f.submit %>
 <% end %> -->
 
-<%= form_for @question, id: "new_question", remote: true do |f| %>
+<%= form_for @question, id: "new_question", remote: true, authenticity_token: true do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
 
   <%= f.fields_for :options do |option_fields| %>
     <%= option_fields.label :description, "Option A" %>
     <%= option_fields.text_field :description %>
+    <%= option_fields.file_field :image %>
   <% end %>
-
+<br />
   <%= f.fields_for :options do |option_fields| %>
     <%= option_fields.label :description, "Option B" %>
     <%= option_fields.text_field :description %>
+    <%= option_fields.file_field :image %>
   <% end %>
   <%= f.submit %>
 <% end %>
 
 <!-- Nested form in rails terms. -->
+<!-- 
+authenticitiy_token :true allows for paper-clip to work in ajax -->
